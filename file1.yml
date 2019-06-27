@@ -1,0 +1,20 @@
+---
+-
+  hosts: localhost
+  tasks:
+    -
+      file:
+        path: "/home/ubuntu/new_file.txt"
+        state: touch
+      name: "Create a log file"
+    -
+      lineinfile:
+        insertbefore: BOF
+        line: "Added a Line in this file... "
+        path: "/home/ubuntu/new_file.txt"
+      name: "line insert"
+...
+
+
+
+
