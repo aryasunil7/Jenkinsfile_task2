@@ -12,6 +12,7 @@ node {
 			sh 'ansible-playbook --syntax-check ./file1.yml'
 		stage 'Run playbook' 	
 			sh 'ansible-playbook file1.yml'
+	currentBuild.result = 'SUCCESS'
 
     	echo "RESULT: ${currentBuild.result}"
 }
