@@ -1,25 +1,22 @@
 node {
 	try{
-	stage 'Checkout' 	
-		checkout scm
+		stage 'Checkout' 	
+			checkout scm
 		
-	def exists = fileExists 'file1.yml'
-
-	if (exists) {
-    		echo 'Yes'
-	} else {
-    		echo 'No'
-	}
+		def exists = fileExists 'file1.yml'
+		if (exists) {
+    			echo 'Yes'
+		} else {
+    			echo 'No'
+		}
+		stage 'Syntax check' 	
+			sh 'ansible-playbook --syntax-check ./file1.yml'
+		stage 'Run playbook' 	
+			sh 'ansible-playbook file1.yml'
 	
-	stage 'Syntax check' 	
-		sh 'ansible-playbook --syntax-check ./file1.yml'
-		
-	stage 'Run playbook' 	
-		sh 'ansible-playbook file1.yml'
 	}catch (Exception err) {
         	echo "RESULT: ${currentBuild.result}"
     	}
 	
     	echo "RESULT: ${currentBuild.result}"
-	
 }
