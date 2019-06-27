@@ -1,4 +1,5 @@
 node {
+	try {
 	stage 'Checkout' 	
 		checkout scm
 		
@@ -16,9 +17,9 @@ node {
 	stage 'Run playbook' 	
 		sh 'ansible-playbook file1.yml'
 		
-	 try {
+	 
         // do something that fails
-        	echo "Build Result"
+        	
       		currentBuild.result = 'SUCCESS'
     	} catch (Exception err) {
         	currentBuild.result = 'FAILURE'
