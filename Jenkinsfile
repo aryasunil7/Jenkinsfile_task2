@@ -1,4 +1,7 @@
 node {
+	stage 'Checkout' 	
+		checkout scm
+		
 	def exists = fileExists 'file1.yml'
 
 	if (exists) {
