@@ -16,7 +16,10 @@ node {
 		
 	stage 'Run playbook' 	
 		sh 'ansible-playbook file1.yml'
-	}
+	}catch (Exception err) {
+        	echo "RESULT: ${currentBuild.result}"
+    	}
+	
     	echo "RESULT: ${currentBuild.result}"
 	
 }
